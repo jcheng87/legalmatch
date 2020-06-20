@@ -68,6 +68,8 @@ def legal_match():
 
     # onit final df
     onit_final = onit_df.copy()
+    onit_final['Invoice Total (USD)'] = onit_final['Invoice Total (USD)'].apply(lambda x: x.replace(',','')) #necessary step to convert to amount to float
+    onit_final = onit_final.astype({'Invoice Total (USD)':'float64'})
 
     #create check files for onit and vc
     onit_check = onit_df.copy()
