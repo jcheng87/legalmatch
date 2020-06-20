@@ -134,7 +134,6 @@ def legal_match():
 
     #create pivot for vc_final
     vc_final_pv= vc_final.pivot_table(index='Vendor Name', columns = ['Unbilled/Unpaid','Accrued?','Currency'], values='Amount', aggfunc=np.sum, margins=True)
+    onit_final_pv= onit_final.pivot_table(index='Vendor Name', columns = ['Accrued?'], values='Invoice Total (USD)', aggfunc=np.sum, margins=True)
 
-    return [vc_final,onit_final,vc_final_pv]
-
-
+    return {'vc_final':vc_final,'onit_final':onit_final,'vc_final_pv':vc_final_pv, 'onit_final_pv':onit_final_pv}
