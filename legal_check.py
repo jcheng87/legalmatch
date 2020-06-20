@@ -59,12 +59,13 @@ def legal_match():
     
     #Onit file
     #['Vendor', 'Invoice Number']
-    onit_df = pd.read_csv(os.path.join(dir_path,ONIT),dtype={'Vendor':'object','Invoice Number':'object'})
+    onit_df = pd.read_csv(os.path.join(dir_path,ONIT),dtype={'Vendor ID':'object','Invoice Number':'object'})
     
     #confirm final df
     vc_final = vc_df.copy()
     vc_final['Amount'] = vc_final['Amount'].apply(lambda x: x.replace(',','')) #necessary step to convert to amount to float
     vc_final = vc_final.astype({'Amount':'float64'})
+    vc_final.reindex
 
     # onit final df
     onit_final = onit_df.copy()
